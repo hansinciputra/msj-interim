@@ -1,0 +1,986 @@
+function setCompetitorProductData(){
+        var db = firebase.firestore();
+var db_bartex = db.collection("bartex");
+var db_sumber = db.collection("sumber");
+var writeBatch = db.batch();
+
+        /*writeBatch.set(db_bartex.doc(),{
+            competitor: "BARTEX",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"0.25",
+            phasa:"3",  
+            price: ""
+        });
+        writeBatch.set(db_bartex.doc(),{
+            competitor: "BARTEX",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"0.5",
+            phasa:"3",  
+            price: ""
+        });
+        writeBatch.set(db_bartex.doc(),{
+            competitor: "BARTEX",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"0.75",
+            phasa:"3",  
+            price: ""
+        });
+        writeBatch.set(db_bartex.doc(),{
+            competitor: "BARTEX",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"1",
+            phasa:"3",  
+            price: ""
+        });
+        writeBatch.set(db_bartex.doc(),{
+            competitor: "BARTEX",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"1.5",
+            phasa:"3",  
+            price: ""
+        });
+        writeBatch.set(db_bartex.doc(),{
+            competitor: "BARTEX",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"2",
+            phasa:"3",  
+            price: ""
+        });
+        writeBatch.set(db_bartex.doc(),{
+            competitor: "BARTEX",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"3",
+            phasa:"3",  
+            price: ""
+        });
+        writeBatch.set(db_bartex.doc(),{
+            competitor: "BARTEX",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"4",
+            phasa:"3",  
+            price: ""
+        });
+        writeBatch.set(db_bartex.doc(),{
+            competitor: "BARTEX",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"5.5",
+            phasa:"3",  
+            price: ""
+        });
+        writeBatch.set(db_bartex.doc(),{
+            competitor: "BARTEX",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"7.5",
+            phasa:"3",  
+            price: ""
+        });
+        writeBatch.set(db_bartex.doc(),{
+            competitor: "BARTEX",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"10",
+            phasa:"3",  
+            price: ""
+        });
+        writeBatch.set(db_bartex.doc(),{
+            competitor: "BARTEX",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"15",
+            phasa:"3",  
+            price: ""
+       });
+
+       //sini b5 almini
+       writeBatch.set(db_bartex.doc(),{
+        competitor: "BARTEX",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"0.25",
+        phasa:"3",  
+        price: ""
+    });
+    writeBatch.set(db_bartex.doc(),{
+        competitor: "BARTEX",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"0.5",
+        phasa:"3",  
+        price: ""
+    });
+    writeBatch.set(db_bartex.doc(),{
+        competitor: "BARTEX",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"0.75",
+        phasa:"3",  
+        price: ""
+    });
+    writeBatch.set(db_bartex.doc(),{
+        competitor: "BARTEX",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"1",
+        phasa:"3",  
+        price: ""
+    });
+    writeBatch.set(db_bartex.doc(),{
+        competitor: "BARTEX",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"1.5",
+        phasa:"3",  
+        price: ""
+    });
+    writeBatch.set(db_bartex.doc(),{
+        competitor: "BARTEX",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"2",
+        phasa:"3",  
+        price: ""
+    });
+    writeBatch.set(db_bartex.doc(),{
+        competitor: "BARTEX",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"3",
+        phasa:"3",  
+        price: ""
+    });
+    writeBatch.set(db_bartex.doc(),{
+        competitor: "BARTEX",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"4",
+        phasa:"3",  
+        price: ""
+    });
+    writeBatch.set(db_bartex.doc(),{
+        competitor: "BARTEX",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"5.5",
+        phasa:"3",  
+        price: ""
+    });
+    writeBatch.set(db_bartex.doc(),{
+        competitor: "BARTEX",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"7.5",
+        phasa:"3",  
+        price: ""
+    });
+    writeBatch.set(db_bartex.doc(),{
+        competitor: "BARTEX",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"10",
+        phasa:"3",  
+        price: ""
+    });
+    writeBatch.set(db_bartex.doc(),{
+        competitor: "BARTEX",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"15",
+        phasa:"3",  
+        price: ""
+   });
+   //cast iron
+
+   writeBatch.set(db_bartex.doc(),{
+    competitor: "BARTEX",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"0.25",
+    phasa:"3",  
+    price: ""
+});
+writeBatch.set(db_bartex.doc(),{
+    competitor: "BARTEX",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"0.5",
+    phasa:"3",  
+    price: ""
+});
+writeBatch.set(db_bartex.doc(),{
+    competitor: "BARTEX",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"0.75",
+    phasa:"3",  
+    price: ""
+});
+writeBatch.set(db_bartex.doc(),{
+    competitor: "BARTEX",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"1",
+    phasa:"3",  
+    price: ""
+});
+writeBatch.set(db_bartex.doc(),{
+    competitor: "BARTEX",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"1.5",
+    phasa:"3",  
+    price: ""
+});
+writeBatch.set(db_bartex.doc(),{
+    competitor: "BARTEX",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"2",
+    phasa:"3",  
+    price: ""
+});
+writeBatch.set(db_bartex.doc(),{
+    competitor: "BARTEX",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"3",
+    phasa:"3",  
+    price: ""
+});
+writeBatch.set(db_bartex.doc(),{
+    competitor: "BARTEX",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"4",
+    phasa:"3",  
+    price: ""
+});
+writeBatch.set(db_bartex.doc(),{
+    competitor: "BARTEX",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"5.5",
+    phasa:"3",  
+    price: ""
+});
+writeBatch.set(db_bartex.doc(),{
+    competitor: "BARTEX",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"7.5",
+    phasa:"3",  
+    price: ""
+});
+writeBatch.set(db_bartex.doc(),{
+    competitor: "BARTEX",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"10",
+    phasa:"3",  
+    price: ""
+});
+writeBatch.set(db_bartex.doc(),{
+    competitor: "BARTEX",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"15",
+    phasa:"3",  
+    price: ""
+});
+
+//sini b5 cast iron
+writeBatch.set(db_bartex.doc(),{
+competitor: "BARTEX",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"0.25",
+phasa:"3",  
+price: ""
+});
+writeBatch.set(db_bartex.doc(),{
+competitor: "BARTEX",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"0.5",
+phasa:"3",  
+price: ""
+});
+writeBatch.set(db_bartex.doc(),{
+competitor: "BARTEX",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"0.75",
+phasa:"3",  
+price: ""
+});
+writeBatch.set(db_bartex.doc(),{
+competitor: "BARTEX",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"1",
+phasa:"3",  
+price: ""
+});
+writeBatch.set(db_bartex.doc(),{
+competitor: "BARTEX",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"1.5",
+phasa:"3",  
+price: ""
+});
+writeBatch.set(db_bartex.doc(),{
+competitor: "BARTEX",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"2",
+phasa:"3",  
+price: ""
+});
+writeBatch.set(db_bartex.doc(),{
+competitor: "BARTEX",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"3",
+phasa:"3",  
+price: ""
+});
+writeBatch.set(db_bartex.doc(),{
+competitor: "BARTEX",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"4",
+phasa:"3",  
+price: ""
+});
+writeBatch.set(db_bartex.doc(),{
+competitor: "BARTEX",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"5.5",
+phasa:"3",  
+price: ""
+});
+writeBatch.set(db_bartex.doc(),{
+competitor: "BARTEX",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"7.5",
+phasa:"3",  
+price: ""
+});
+writeBatch.set(db_bartex.doc(),{
+competitor: "BARTEX",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"10",
+phasa:"3",  
+price: ""
+});
+writeBatch.set(db_bartex.doc(),{
+competitor: "BARTEX",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"15",
+phasa:"3",  
+price: ""
+});*/
+
+        writeBatch.set(db_sumber.doc(),{
+            competitor: "SUMBER",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"0.25",
+            phasa:"3",  
+            price: "420875"
+        });
+        writeBatch.set(db_sumber.doc(),{
+            competitor: "SUMBER",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"0.5",
+            phasa:"3",  
+            price: "563063"
+        });
+        writeBatch.set(db_sumber.doc(),{
+            competitor: "SUMBER",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"0.75",
+            phasa:"3",  
+            price: "728000"
+        });
+        writeBatch.set(db_sumber.doc(),{
+            competitor: "SUMBER",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"1",
+            phasa:"3",  
+            price: "779188"
+        });
+        writeBatch.set(db_sumber.doc(),{
+            competitor: "SUMBER",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"1.5",
+            phasa:"3",  
+            price: "910000"
+        });
+        writeBatch.set(db_sumber.doc(),{
+            competitor: "SUMBER",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"2",
+            phasa:"3",  
+            price: "1052188"
+        });
+        writeBatch.set(db_sumber.doc(),{
+            competitor: "SUMBER",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"3",
+            phasa:"3",  
+            price: "1387750"
+        });
+        writeBatch.set(db_sumber.doc(),{
+            competitor: "SUMBER",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"4",
+            phasa:"3",  
+            price: "1524250"
+        });
+        writeBatch.set(db_sumber.doc(),{
+            competitor: "SUMBER",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"5.5",
+            phasa:"3",  
+            price: "1933750"
+        });
+        writeBatch.set(db_sumber.doc(),{
+            competitor: "SUMBER",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"7.5",
+            phasa:"3",  
+            price: "2700000"
+        });
+        writeBatch.set(db_sumber.doc(),{
+            competitor: "SUMBER",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"10",
+            phasa:"3",  
+            price: "3190688"
+        });
+        writeBatch.set(db_sumber.doc(),{
+            competitor: "SUMBER",
+            type: "DINAMO",
+            material:"aluminium",
+            model: "B3",
+            rpm:"750",pole:"2",
+            hp:"15",
+            phasa:"3",  
+            price: "4754750"
+       });
+
+       //sini b5 almini
+       writeBatch.set(db_sumber.doc(),{
+        competitor: "SUMBER",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"0.25",
+        phasa:"3",  
+        price: "439938"
+    });
+    writeBatch.set(db_sumber.doc(),{
+        competitor: "SUMBER",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"0.5",
+        phasa:"3",  
+        price: "580125"
+    });
+    writeBatch.set(db_sumber.doc(),{
+        competitor: "SUMBER",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"0.75",
+        phasa:"3",  
+        price: "750750"
+    });
+    writeBatch.set(db_sumber.doc(),{
+        competitor: "SUMBER",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"1",
+        phasa:"3",  
+        price: "807625"
+    });
+    writeBatch.set(db_sumber.doc(),{
+        competitor: "SUMBER",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"1.5",
+        phasa:"3",  
+        price: "938438"
+    });
+    writeBatch.set(db_sumber.doc(),{
+        competitor: "SUMBER",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"2",
+        phasa:"3",  
+        price: "1086313"
+    });
+    writeBatch.set(db_sumber.doc(),{
+        competitor: "SUMBER",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"3",
+        phasa:"3",  
+        price: "1433250"
+    });
+    writeBatch.set(db_sumber.doc(),{
+        competitor: "SUMBER",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"4",
+        phasa:"3",  
+        price: "1575438"
+    });
+    writeBatch.set(db_sumber.doc(),{
+        competitor: "SUMBER",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"5.5",
+        phasa:"3",  
+        price: "1996313"
+    });
+    writeBatch.set(db_sumber.doc(),{
+        competitor: "SUMBER",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"7.5",
+        phasa:"3",  
+        price: "2185313"
+    });
+    writeBatch.set(db_sumber.doc(),{
+        competitor: "SUMBER",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"10",
+        phasa:"3",  
+        price: "3287375"
+    });
+    writeBatch.set(db_sumber.doc(),{
+        competitor: "SUMBER",
+        type: "DINAMO",
+        material:"aluminium",
+        model: "B5",
+        rpm:"750",pole:"2",
+        hp:"15",
+        phasa:"3",  
+        price: "4902625"
+   });
+   //b3 cast iron
+
+   writeBatch.set(db_sumber.doc(),{
+    competitor: "SUMBER",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"0.25",
+    phasa:"3",  
+    price: ""
+});
+writeBatch.set(db_sumber.doc(),{
+    competitor: "SUMBER",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"0.5",
+    phasa:"3",  
+    price: ""
+});
+writeBatch.set(db_sumber.doc(),{
+    competitor: "SUMBER",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"0.75",
+    phasa:"3",  
+    price: "773582"
+});
+writeBatch.set(db_sumber.doc(),{
+    competitor: "SUMBER",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"1",
+    phasa:"3",  
+    price: "819086"
+});
+writeBatch.set(db_sumber.doc(),{
+    competitor: "SUMBER",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"1.5",
+    phasa:"3",  
+    price: "984041"
+});
+writeBatch.set(db_sumber.doc(),{
+    competitor: "SUMBER",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"2",
+    phasa:"3",  
+    price: "1126244"
+});
+writeBatch.set(db_sumber.doc(),{
+    competitor: "SUMBER",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"3",
+    phasa:"3",  
+    price: "1478906"
+});
+writeBatch.set(db_sumber.doc(),{
+    competitor: "SUMBER",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"4",
+    phasa:"3",  
+    price: "1621109"
+});
+writeBatch.set(db_sumber.doc(),{
+    competitor: "SUMBER",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"5.5",
+    phasa:"3",  
+    price: "2087533"
+});
+writeBatch.set(db_sumber.doc(),{
+    competitor: "SUMBER",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"7.5",
+    phasa:"3",  
+    price: "2730288"
+});
+writeBatch.set(db_sumber.doc(),{
+    competitor: "SUMBER",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"10",
+    phasa:"3",  
+    price: "3191024"
+});
+writeBatch.set(db_sumber.doc(),{
+    competitor: "SUMBER",
+    type: "DINAMO",
+    material:"iron",
+    model: "B3",
+    rpm:"750",pole:"2",
+    hp:"15",
+    phasa:"3",  
+    price: "1755252"
+});
+
+//sini b5 cast iron
+writeBatch.set(db_sumber.doc(),{
+competitor: "SUMBER",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"0.25",
+phasa:"3",  
+price: ""
+});
+writeBatch.set(db_sumber.doc(),{
+competitor: "SUMBER",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"0.5",
+phasa:"3",  
+price: ""
+});
+writeBatch.set(db_sumber.doc(),{
+competitor: "SUMBER",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"0.75",
+phasa:"3",  
+price: "802022"
+});
+writeBatch.set(db_sumber.doc(),{
+competitor: "SUMBER",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"1",
+phasa:"3",  
+price: "847527"
+});
+writeBatch.set(db_sumber.doc(),{
+competitor: "SUMBER",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"1.5",
+phasa:"3",  
+price: "1018170"
+});
+writeBatch.set(db_sumber.doc(),{
+competitor: "SUMBER",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"2",
+phasa:"3",  
+price: "1160372"
+});
+writeBatch.set(db_sumber.doc(),{
+competitor: "SUMBER",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"3",
+phasa:"3",  
+price: "1524411"
+});
+writeBatch.set(db_sumber.doc(),{
+competitor: "SUMBER",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"4",
+phasa:"3",  
+price: "1672301"
+});
+writeBatch.set(db_sumber.doc(),{
+competitor: "SUMBER",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"5.5",
+phasa:"3",  
+price: "2155790"
+});
+writeBatch.set(db_sumber.doc(),{
+competitor: "SUMBER",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"7.5",
+phasa:"3",  
+price: "2815610"
+});
+writeBatch.set(db_sumber.doc(),{
+competitor: "SUMBER",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"10",
+phasa:"3",  
+price: "3287722"
+});
+writeBatch.set(db_sumber.doc(),{
+competitor: "SUMBER",
+type: "DINAMO",
+material:"iron",
+model: "B5",
+rpm:"750",pole:"2",
+hp:"15",
+phasa:"3",  
+price: "4903142"
+});
+        writeBatch.commit().then(()=>{
+            console.log("insert data successful");
+        }
+        ).catch(error => {
+            console.log(`insert data failed ${error}`)
+        });
+    }

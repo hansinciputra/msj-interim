@@ -1,0 +1,39 @@
+<head>
+<link rel="stylesheet" href="interim.css">
+</head>
+<body>
+    <h1>MSJ INTERNAL SYSTEM</h1>
+    <p>Hello World!</p>
+    <a href="#" class ="addUser">Klik to add data to database</a>
+
+    <div class = "core_product">
+      <h2>Core Product</h2>
+      <ul>
+        <li>
+          <div>WDa1021</div>
+          <div>WPA 250 ratio 1:10</div>
+          <div>10 Unit</div>
+          <div>Rp 500,000,-</div>
+      </ul>
+      <button>Tambah Product</button>
+    </div>
+ 
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA1yzwrxZ-DyhguNHDqVc7_WlDJNrGQ-D8",
+    authDomain: "msj-interim.firebaseapp.com",
+    databaseURL: "https://msj-interim.firebaseio.com",
+    projectId: "msj-interim",
+    storageBucket: "",
+    messagingSenderId: "597690254115"
+  };
+  firebase.initializeApp(config);
+  const settings = {timestampsInSnapshots: true};
+  firebase.firestore().settings(settings);
+</script>
+<script type="text/javascript" src="bundle.js"></script></body>
