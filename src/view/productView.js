@@ -199,7 +199,8 @@ const updateContainerOption = (type,intent,obj=``)=> {
                             <option value="worm" ${data === undefined ? ``: (data.model === `worm` ? `selected = "selected"` : ``)}>Worm</option>
                             <option value="input_shaft" ${data === undefined ? ``: (data.model === `input_shaft` ? `selected = "selected"` : ``)}>Input Shaft</option>
                             <option value="output_shaft" ${data === undefined ? ``: (data.model === `output_shaft` ? `selected = "selected"` : ``)}>Output Shaft</option>
-                            <option value="flange" ${data === undefined ? ``: (data.model === `flange` ? `selected = "selected"` : ``)}>Flange</option>
+                            <option value="flange" ${data === undefined ? ``: (data.model === `input_flange` ? `selected = "selected"` : ``)}>Input Flange</option>
+                            <option value="flange" ${data === undefined ? ``: (data.model === `output_flange` ? `selected = "selected"` : ``)}>Output Flange</option>
                 </select>
                 <br>
                 <label>Size</label>

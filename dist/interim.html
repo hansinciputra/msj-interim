@@ -1,27 +1,419 @@
 <head>
-<link rel="stylesheet" href="interim.css">
+<link rel="stylesheet" type="text/css" href="interim.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <h1>MSJ INTERNAL SYSTEM</h1>
-    <p>Hello World!</p>
-    <a href="#" class ="addUser">Klik to add data to database</a>
 
-    <div class = "core_product">
-      <h2>Core Product</h2>
-      <ul>
-        <li>
-          <div>WDa1021</div>
-          <div>WPA 250 ratio 1:10</div>
-          <div>10 Unit</div>
-          <div>Rp 500,000,-</div>
-      </ul>
-      <button>Tambah Product</button>
+    <!--User login section-->
+    <div class="login-wrapper">
+        <form class="form-signin">       
+          <h2 class="form-signin-heading">Login Terlebih Dahulu</h2>
+          <input id = "userNameSignin" type="text" class="form-control" name="username" placeholder="username" required="" autofocus="" />
+          <input id = "passwordSignin" type="password" class="form-control" name="password" placeholder="Password" required=""/>      
+          <button id = "btnSignin" class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
+        </form>
+      </div>
+    <!--<a href="#" class ="addProduct mainMenu">Klik to add data to database</a>-->
+    <!--<a href="#" class ="addCompetitorProduct mainMenu">Klik to add competitor product to database</a>-->
+    <div class = "mainMenuSection hidden">
+        <a href="#" class ="coreProductMenu manageProduct mainMenu mediaHide">Managemen Product</a>
+        <a href="#" class ="coreProductMenu manageWarehouse mainMenu mediaHide">In/Out Barang</a>
+        <a href="#" class ="coreProductMenu menuHarga mainMenu">Cek Pricing</a>
+        <a href="#" class ="coreProductMenu menuCompetitor mainMenu mediaHide">Competitor</a>
     </div>
+    <div class = "core_container hidden"><!--add hidden nanti-->
+        <img id="wellcomeimg" src="https://pbs.twimg.com/media/DeqkRWxUYAILzKw.jpg">
+        <!--WAREHOUSE SECTION-->
+        <!--<div class = "warehouseContainer">
+            <fieldset>
+                <legend>Tanggal</legend>
+                <div>
+                <form>
+                    <input id= "warehouseDate" type="date">
+                </form>
+                    <input id="warehouseOutButton" type="button" value="KELUAR BARANG">
+                    <input id="warehouseInButton" type="button" value="MASUK BARANG">
+                </div>
+            </fieldset>
+            <table id="warehouseTable" class ="minWidthTable marginTop30px">
+                <tr>
+                    <th>No.</th>
+                    <th>CODE</th>
+                    <th>BARANG</th>
+                    <th>SISA STOCK</th>
+                    <th>In/Out</th>
+                    <th>Nama Customer</th>
+                    <th>_____</th> 
+                </tr>
+                <tr class="rowKeluarBarang">
+                    <td>1</td>
+                    <td class= "tableMediumWidth">WDa1020</td>
+                    <td style="text-align:left" class= "tableMediumWidth">WPA 100 : 20</td>
+                    <td class= "tableSmallWidth">30 Unit</td>
+                    <td class= "tableSmallWidth"><input type="number" class="smallInput"></td>
+                    <td class= "tableLongWidth">Pak Vincent</td>
+                    <td class= "tableSmallWidth">
+                            <i class="fa fa-truck submitWarehouseRecord" id = "" style="cursor:pointer;font-size:24px;color:green;float:left;"></i>
+                            <i class="fa fa-trash-o deleteWarehouseRecord" id = "" style="cursor:pointer;font-size:24px;color:red;float:right;"></i>
+                        </td>
+                </tr>
+                <tr class="rowKeluarBarang">
+                        <td>2</td>
+                        <td class= "tableMediumWidth">WDa1020</td>
+                        <td style="text-align:left" class= "tableMediumWidth">Dinamo 1Hp / 3 Phase / B3 / 1500 Rpm / Cast Iron</td>
+                        <td class= "tableSmallWidth">30 Unit</td>
+                        <td class= "tableSmallWidth"><input type="number" class="smallInput"></td>
+                        <td class= "tableLongWidth">Pak Vincent</td>
+                        <td class= "tableSmallWidth">
+                                <i class="fa fa-truck submitWarehouseRecord" id = "" style="cursor:pointer;font-size:24px;color:green;float:left;"></i>
+                                <i class="fa fa-trash-o deleteWarehouseRecord" id = "" style="cursor:pointer;font-size:24px;color:red;float:right;"></i>
+                            </td>
+                </tr>
+                <tr class="rowMasukBarang">
+                    <td>3</td>
+                    <td class= "tableMediumWidth"><input type="text"></td>
+                    <td class= "tableMediumWidth"></td>
+                    <td class= "tableSmallWidth"></td>
+                    <td class= "tableSmallWidth"></td>
+                    <td class= "tableLongWidth"></td>
+                    <td class= "tableSmallWidth"><i class="fa fa-trash-o deleteWarehouseRecord" id = "" style="cursor:pointer;font-size:24px;color:red;"></i></td>
+                </tr>
+            </table>
+        </div>-->
+        <!--COMPETITOR SECTION-->      
+        <!--
+            <div class = "compatitor_container">
+                <div>
+                    <label>Competitor</label>
+                    <select id="competitor_product_name_choice">
+                        <option>BARTEX</option>
+                        <option>SUMBER</option>
+                    </select>
+                    <label>Product</label>
+                    <select id="competitor_product_type_choice">
+                            <option>WPA</option>
+                            <option>NMRV</option>
+                            <option>DINAMO</option>
+                    </select>
+                    <span id="dinamo_competitor_choice" class="hidden">
+                        <label>Phase</label>
+                        <select id= "competitor_product_dinamo_phasa_choice" >
+                                <option>1 Phasa</option>
+                                <option>3 Phasa</option>
+                        </select>
+                        <label>Material</label>
+                        <select id= "competitor_product_dinamo_material_choice">
+                                <option>Aluminium</option>
+                                <option>Cast Iron</option>
+                        </select>
+                    </span>
+                    <button id="competitor_product_search_button">Cari</button>
+                    
+
+                </div>
+                
+            <div id = "competitorPrice">
+                <div class="competitor_gearbox_container width800">
+                <h3>WPA</h3>
+                <table>
+                    <tr>
+                        <th>Tipe</th>
+                        <th>Harga</th>
+                    </tr>
+                    <tr>
+                        <td>WPA 040</td>
+                        <td>
+                            <input type="hidden" name="docId" value="">
+                            <input type="hidden" name="competitor" value="BARTEX"  >
+                            <input type="hidden" name="tipe" value="WPA" >
+                            <input type="hidden" name="size" value="40" >
+                            <input type="number" name = "price" class = "competitorValue" value = "" placeholder="Rp 456,000,-">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>WPA 050</td>
+                        <td>
+                            <input type="hidden" name="docId" value="">
+                            <input type="hidden" name="competitor" value="BARTEX">
+                            <input type="hidden" name="tipe" value="WPA" >
+                            <input type="hidden" name="size" value="50">
+                            <input type="number" name = "price" class = "competitorValue" value = "" placeholder="Rp 556,000,-">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>WPA 060</td>
+                            <td>
+                                <input type="hidden" name="docId" value="">
+                                <input type="hidden" name="competitor" value="BARTEX">
+                                <input type="hidden" name="tipe" value="WPA" >
+                                <input type="hidden" name="size" value="60">
+                                <input type="number" name = "price" class = "competitorValue" value ="" placeholder= "Rp 556,000,-">
+                            </td>
+                        </tr>
+                     <tr>
+                         <td>WPA 060</td>
+                             <td>
+                                  <input type="hidden" name="docId" value="">
+                                  <input type="hidden" name="competitor" value="BARTEX">
+                                  <input type="hidden" name="tipe" value="WPA" >
+                                  <input type="hidden" name="size" value="60">
+                                  <input type="number" name = "price" class = "competitorValue" value ="" placeholder= "Rp 556,000,-">
+                            </td>
+                     </tr>                            
+                </table>
+      
+               <h3>NMRV</h3>
+                    <table>
+                        <tr>
+                            <th>Tipe</th>
+                            <th>Harga</th>
+                        </tr>
+                        <tr>
+                            <td>NMRV 040</td>
+                            <td>
+                                <input type="hidden" name="docId" value="">
+                                <input type="hidden" name="competitor" value="BARTEX"  >
+                                <input type="hidden" name="tipe" value="WPA" >
+                                <input type="hidden" name="size" value="40" >
+                                <input type="number" name = "price" class = "competitorValue" value = "" placeholder="Rp 456,000,-">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>NMRV 050</td>
+                            <td>
+                                <input type="hidden" name="docId" value="">
+                                <input type="hidden" name="competitor" value="BARTEX">
+                                <input type="hidden" name="tipe" value="WPA" >
+                                <input type="hidden" name="size" value="50">
+                                <input type="number" name = "price" class = "competitorValue" value = "" placeholder="Rp 556,000,-">
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+            <div class="width800">
+                <h3>Dinamo 1 Phase</h3>
+                    <h4>Aluminium</h4>
+                    <table>
+                        <tr>
+                            <th>Tipe</th>
+                            <th>Harga</th>
+                    </tr>
+                    <tr>      
+                            <td>Dinamo 1 HP / 1 Phase / B3 / 1500RPM / Iron  </td>
+                            <td><input value = "Rp 656,000,-"></td>
+                        </tr>
+                    </table>
+
+                    <h4>Cast Iron</h4>
+                    <table>                       
+                            <tr>
+                                    <th>Tipe</th>
+                                    <th>Harga</th>
+                            </tr>
+                            <tr>      
+                                <td>Dinamo 1 HP / 1 Phase / B3 / 1500RPM / Iron  </td>
+                                <td><input value = "Rp 656,000,-"></td>
+                            </tr>
+                    </table>
+
+                    <h3><legend>Dinamo 3 Phase</h3>
+                        <h4>Aluminium</h4>
+                    <table>
+                        <tr>
+                            <th>Tipe</th>
+                            <th>Harga</th>
+                    </tr>
+                    <tr>      
+                            <td>Dinamo 1 HP / 3 Phase / B3 / 1500RPM / Iron  </td>
+                            <td><input value = "Rp 656,000,-"></td>
+                        </tr>
+                    </table>
+                    <h4>Cast Iron</h4>
+                    <table>                       
+                            <tr>
+                                    <th>Tipe</th>
+                                    <th>Harga</th>
+                            </tr>
+                            <tr>      
+                                <td>Dinamo 1 HP / 3 Phase / B3 / 1500RPM / Iron  </td>
+                                <td><input value = "Rp 656,000,-"></td>
+                            </tr>
+                    </table>
+            </div>
+        </div>
+        </div>
+        -->
+        <!--PRICING SECTION-->
+        <!--
+        <div class = "pricingContainer">
+            
+            <div class = "pricingProductSelection">
+                <form>
+                    <select class = "pricingProdSelect width100 font2rem">
+                        <option value="options">Pilih Produk</option>
+                        <option value="WPA">WPA</option>
+                        <option value="NMRV">NMRV</option>
+                        <option value="DINAMO">DINAMO</option>
+                    </select>
+                    
+                    <br>
+                    <label>Tipe</label>
+                    <input type="text" name="type" id = "prodType" value="DINAMO" style="border: 0" readonly><br />
+                    <label>Hp</label>
+                    <input type="number" name="hp" id = "prodHp" step="0.1" placeholder="1 atau 1.5(angka saja)"><br />
+                    <label>Rpm</label>
+                    <br>
+                    <select id = prodRpm>  
+                        <option value="1500">1500 Rpm (2Pole)</option>
+                        <option value="3000">3000 Rpm (4Pole)</option>
+                        <option value="6000">6000 Rpm (6Pole)</option>
+                    </select>
+                    <br>
+                    <label>Phasa</label>
+                    <br>
+                    <select id = prodPhase>
+                        <option value="1" >1 Phasa (220Volt)</option>
+                        <option value="3" >3 Phasa (380Volt)</option>
+                    </select>
+                    <br>
+                    <button class = "btnNewProd width100 font2rem"> Submit </button>           
+                </form>
+            </div>
+            <fieldset>
+                <legend>Perbandingan</legend>
+            <div class = "pricingResult">
+                    <table id = "pricingResultContainer " class = "font-10vw pricingTable">
+                        <tr>
+                            <th class = "title">Code</th>
+                            <th class = "title">Tipe</th>
+                            <th class = "title">Stock</th>
+                        </tr>
+                        <tr>
+                            <td>WDx1020</td>
+                            <td style = "text-align: left;">WPA 120 : 30</td>
+                            <td>10 Unit</td>
+                        </tr>
+                        <tr>
+                            <td>WDz1100</td>
+                            <td style = "text-align: left;">Dinamo 1 hp(0.75kw) 4 Pole(3000rpm) 3 phase </td>
+                            <td>60 Unit</td>
+                        </tr>
+                        <tr>
+                                <td colspan="2" class = "title">Total Stock Tersedia</td>
+                                <td id = "total_stock_available" class = "title border-up-bottom">70 Unit</td>
+                        </tr>
+                    </table>
+                    <table id = "pricingCompetitor" class = "font-10vw pricingTable">
+                            <tr>
+                                <th class = "title">WD</th>
+                                <th class = "title">Bartex</th>
+                                <th class = "title">Sumber</th>
+                            </tr>
+                            <tr>
+                                <td>Rp 940,000 ,-</td>
+                                <td>Rp 576,000 ,-</td>
+                                <td>Rp 554,000 ,-</td>
+                            </tr>
+                            
+                            <tr>
+                                    <td><input type="number" style="text-align: center; font-size: 0.9rem;"><span>% Disc</span></td>
+                                    <td><input type="number" style="text-align: center; font-size: 0.9rem;"><span>% Up</span></td>
+                                    <td><input type="number" style="text-align: center; font-size: 0.9rem;"><span>% Up</span></td>
+                            </tr>
+                            
+                            <tr>
+                                    <td><input type="number" style="text-align: center; font-size: 0.9rem;">  + % Disc</td>
+                                    <td></td>
+                                    <td></td>
+                            </tr>
+                            <tr>
+                                    <td id = "wd_final_price" class="border-up-bottom" style="font-size:1rem;">Rp 520,000 ,-</td>
+                                    <td id = "bartex_final_price" class="border-up-bottom" style="font-size:1rem;">Rp 576,000 ,-</td>
+                                    <td id = "sumber_final_price" class="border-up-bottom" style="font-size:1rem;">Rp 554,000 ,-</td>
+                            </tr>      
+                    </table>
+            </div>
+        
+        </fieldset>
+        </div>-->
+        <!--CORE PRODUCT SECTION-->
+        <!--
+      <div class = "coreProduct">      
+      <h2>Core Product</h2>
+      <div class ="core_product_container column1">
+        <ul class = core_product_table>
+                    <div class="wrap">
+                        <div class="core_product_search">
+                           <input id="prodSearch" type="text" class="searchTerm" placeholder="Tulis code atau nama barang">
+                        </div>
+                     </div>
+          <a href="#" class ="coreProduct subMenu addProduct">Tambah Produk</a>   
+          <li>
+              <span class = "product_code title">Code</span>
+              <span class = "product_type title">Tipe</span>
+              <span class = "product_stock title">Sisa Stock</span>
+              <span class = "product_price title">Harga</span>
+          </li>
+          
+          <li>
+              <span class = "product_code">WDa1021</span>
+              <span class = "product_type">WPA 250 ratio 1:10</span>
+              <span class = "product_stock">10 Unit</span>
+              <span class = "product_price">Rp 500,000,-</span>
+          </li>
+          <li>
+              <span class = "product_code">WDa1022</span>
+              <span class = "product_type">WPA 100 ratio 1:20</span>
+              <span class = "product_stock">5 Unit</span>
+              <span class = "product_price">Rp 300,000,-</span>
+          </li>
+          <li>
+              <span class = "product_code">WDa1020</span>
+              <span class = "product_type">Motor 3Phase 1/4Hp(0.75Kw) 3Pole(1500Rpm) </span>
+              <span class = "product_stock">5 Unit</span>
+              <span class = "product_price">Rp 1,300,000,-</span>
+          </li>
+          <li>
+              <span class = "product_code">WDa1020</span>
+              <span class = "product_type">Motor 3Phase 1/4Hp(0.75Kw) 3Pole(1500Rpm) Motor 3Phase 1/4Hp(0.75Kw) 3Pole(1500Rpm)</span>
+              <span class = "product_stock">5 Unit</span>
+              <span class = "product_price">Rp 1,300,000,-</span>
+          </li>
+          
+        </ul>
+           
+      </div>
+      <div class= "core_product_update_product column2">
+            <h2>Tambah Product</h2>
+          <form>
+            <select class = "prodSelect">
+                <option value="options">Pilih Produk</option>
+                <option value="WPA">WPA</option>
+                <option value="NMRV">NMRV</option>
+                <option value="DINAMO">DINAMO</option>
+            </select>
+            <label>Code Barang</label>
+            <input type="text" name="code"><br />         
+            <label>Quantity</label>
+            <input type="number" name="quantity"><br />
+            <label>Harga Pricelist</label>
+            <input type="number" name="price"><br />
+            <button> Submit </button>
+        </form>
+        
+      </div>
+    </div>
+       --> <!--CORE PRODUCT SECTION ENDING-->
+    </div>
+   
  
+     
 <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
 
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-auth.js"></script>
 <script>
   // Initialize Firebase
   var config = {
@@ -35,5 +427,9 @@
   firebase.initializeApp(config);
   const settings = {timestampsInSnapshots: true};
   firebase.firestore().settings(settings);
+
+ 
+
+
 </script>
 <script type="text/javascript" src="bundle.js"></script></body>
