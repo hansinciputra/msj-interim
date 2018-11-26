@@ -1,4 +1,5 @@
 import { elements } from "./base";
+import moment from  'moment';
 
 export const deleteRowRecord = (target) =>{
     if(target){
@@ -18,7 +19,7 @@ export const renderWarehouseContainer = ()=>{
                 <legend>Tanggal</legend>
                 <div>
                 <form>
-                    <input id= "warehouseDate" type="date" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+                    <input id= "warehouseMonth" type="month" required">
                 </form>
                     <input id="warehouseOutButton" type="button" value="KELUAR BARANG">
                     <input id="warehouseInButton" type="button" value="MASUK BARANG">
@@ -26,7 +27,7 @@ export const renderWarehouseContainer = ()=>{
             </fieldset>
             <table id="warehouseTable" class ="minWidthTable marginTop30px">
                 <tr>
-                    <th>No.</th>
+                    <th>Tanggal</th>
                     <th>CODE</th>
                     <th>BARANG</th>
                     <th>SISA STOCK</th>
@@ -39,12 +40,13 @@ export const renderWarehouseContainer = ()=>{
     elements.coreContainer.insertAdjacentHTML("afterbegin",html);
 }
 export const renderCodeRow = (instruction,data)=>{
+    console.log(moment().format('L'));
     let html =``;
     if(data){
         //code for : after user insert data into db, we redisplay the user input into the view
         html = `
         <tr class=${data.intent} id="finalInputRow">
-                        <td>${getTableIndex()}</td>
+                        <td id="warehouseDate">${data.tanggal}</td>
                         <td style="text-align:left" class= "tableSmallWidth">${data.code}</td>
                         <td style="text-align:left;padding-left:10px;" class= "tableMediumWidth">${data.desc}</td>
                         <td class= "tableSmallWidth">${data.sisaStock}</td>
@@ -65,7 +67,7 @@ export const renderCodeRow = (instruction,data)=>{
         if(instruction === 'KELUAR BARANG'){
             html = `
             <tr class="rowKeluarBarang" id="rowForCodeInput">
-                        <td>${getTableIndex()}</td>
+                        <td><input id= "warehouseDate" type="date" required value="${moment().format("YYYY-MM-DD")}"></td>
                         <td style="text-align:left" class= "tableSmallWidth"><input type="text" class="codeBarangWarehouse max100width"></td>
                         <td style="text-align:left;padding-left:10px;" class= "tableMediumWidth"></td>
                         <td class= "tableSmallWidth"></td>
@@ -80,7 +82,7 @@ export const renderCodeRow = (instruction,data)=>{
         }else if(instruction === 'MASUK BARANG'){
             html = `
             <tr class="rowMasukBarang" id="rowForCodeInput">
-                        <td>${getTableIndex()}</td>
+                        <td><input id= "warehouseDate" type="date" required value="${moment().format("YYYY-MM-DD")}"></td>
                         <td style="text-align:left" class= "tableSmallWidth"><input type="text" class="codeBarangWarehouse max100width"></td>
                         <td style="text-align:left;padding-left:10px;" class= "tableMediumWidth"></td>
                         <td class= "tableSmallWidth"></td>
@@ -108,10 +110,14 @@ export const prepareUpdateAmountRecordView = (el,stock) =>{
         let greenTruck = el.parentNode.parentNode.childNodes[13].childNodes[3];
         let editButton = el.parentNode.parentNode.childNodes[13].childNodes[5];
         let availableStock = el.parentNode.parentNode.childNodes[7];
-        
+        let tanggal = document.getElementById('warehouseDate').innerHTML;
         //delete old element
+        
         let prevAmount = parseInt(prevEnteredAmount.nodeValue,10);
-        let html = `<input name = "preAmount" type = "hidden" value =${prevAmount}> `;
+        let html = `
+            <input name = "preAmount" type = "hidden" value =${prevAmount}>
+            <input type=hidden id = 'warehouseDate' value = ${tanggal}> 
+        `;
         prevEnteredAmount.parentNode.removeChild(prevEnteredAmount);
         namaCustomer.parentNode.removeChild(namaCustomer);
         greenTruck.parentNode.removeChild(greenTruck);
@@ -127,7 +133,7 @@ export const prepareUpdateAmountRecordView = (el,stock) =>{
 }
 
 //code for when upload pressed(green truck)
-export const renderResultRow = (data)=>{
+export const renderResultRow = (data,tanggal)=>{
     let newTypeProd;
     
     if(data.type === "WPA"){
@@ -142,7 +148,7 @@ export const renderResultRow = (data)=>{
     //console.log(newTypeProd);
     let html = `
         <tr class="${data.intent} newChecker">
-                    <td>${getTableIndex()}</td>
+                    <td>${tanggal}</td>
                     <input class = 'WarehouseRowdocId' type="hidden" name="id" value="${data.docId}">
                     <td style="text-align:left;" class= "tableSmallWidth"><label>${data.code}</label><input type="text" class="codeBarangWarehouse hidden max100width"></td>
                     <td style="text-align:left;padding-left:10px;" class= "tableMediumWidth">${newTypeProd}</td>
@@ -153,6 +159,7 @@ export const renderResultRow = (data)=>{
                     <td class= "tableSmallWidth">
                         <i class="fa fa-truck submitWarehouseRecord lastChecker" id = "" style="cursor:pointer;font-size:24px;color:green;float:left;"></i>
                         <i class="fa fa-trash-o deleteWarehouseRecord" id = "" style="cursor:pointer;font-size:24px;color:red;float:right;"></i>
+                        <input type=hidden id = 'warehouseDate' value = ${tanggal}>
                     </td>
         </tr>`;
     document.getElementById('warehouseTable').insertAdjacentHTML("beforeend",html);

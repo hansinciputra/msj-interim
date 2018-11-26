@@ -59,8 +59,8 @@ const cleanContainer = () =>{
 //==========================WAREHOUSE CONTROLLER ======================================================
 
 elements.coreContainer.addEventListener("change",(el)=>{
-   if(el.target.matches('#warehouseDate')){
-       let date = document.getElementById('warehouseDate').value;
+   if(el.target.matches('#warehouseMonth')){
+       let date = document.getElementById('warehouseMonth').value;
        warehouseView.clearRecordTable();
        console.log(date);
        //1.get data from db based on date doc
@@ -88,20 +88,21 @@ elements.coreContainer.addEventListener("change",(el)=>{
        
        let code = el.target.value.toLowerCase();
        let intent = el.target.parentNode.parentNode.getAttribute('class');
-       //console.log(code,intent);
+       let tanggal = el.target.parentNode.parentNode.childNodes[1].childNodes[0].value;
+       //console.log(code,intent,tanggal);
        if(code){
-           let newWarehouseRow = new warehouseModel.WarehouseRow(code,intent);
+          let newWarehouseRow = new warehouseModel.WarehouseRow(code,intent);
             
            newWarehouseRow.getDatafromCode().then(result=>{
                 if(result.code){
                     //console.log(result);
                     warehouseView.deleteLastRow();
-                    warehouseView.renderResultRow(result);
+                    warehouseView.renderResultRow(result,tanggal);
                 }else{
                     alert("Code Barang Tidak ditemukan, periksa lagi code barang");
                 }
            }).catch(error=>`failed to get data from product db from warehouse index code X33612JSK ${error}`);
-       }
+        }
    }
 });
 elements.coreContainer.addEventListener("click",(el)=>{
@@ -122,7 +123,8 @@ elements.coreContainer.addEventListener("click",(el)=>{
     if(el.target.matches('.submitWarehouseRecord')){
         console.log("upload pressed");
         let dataWarehouseRow = {
-            tanggal : document.getElementById('warehouseDate').value,
+            bulan : document.getElementById('warehouseMonth').value,
+            tanggal : el.target.parentNode.parentNode.childNodes[1].innerHTML,
             code: el.target.parentNode.parentNode.childNodes[5].childNodes[0].innerHTML,
             intent : el.target.parentNode.parentNode.getAttribute('class'),
             docId : el.target.parentNode.parentNode.childNodes[3].value,
@@ -132,8 +134,8 @@ elements.coreContainer.addEventListener("click",(el)=>{
             prevValue : el.target.parentNode.parentNode.childNodes[15].value,
             desc:el.target.parentNode.parentNode.childNodes[7].innerHTML
         }
-        console.log(dataWarehouseRow);
- 
+        console.log(dataWarehouseRow.tanggal);
+        
         warehouseModel.insertWarehouseRow(dataWarehouseRow).then(resolve=>{
             //console.log(resolve);
             warehouseView.deleteRowRecord();
@@ -168,7 +170,7 @@ elements.coreContainer.addEventListener("click",(el)=>{
                     //get code
                     let code = el.target.parentNode.parentNode.childNodes[3].innerHTML;
                     //get date
-                    let tanggal = document.getElementById('warehouseDate').value
+                    let bulan = document.getElementById('warehouseMonth').value
                     //get the user input value
                     //get docId
                     let docId = el.target.parentNode.parentNode.childNodes[13].childNodes[1].value;
@@ -176,7 +178,7 @@ elements.coreContainer.addEventListener("click",(el)=>{
                     //get the map id
                     let mapId = el.target.parentNode.parentNode.childNodes[13].childNodes[9].value;
                     if(mapId){
-                        warehouseModel.deleteWarehouseRecord(tanggal, mapId,userInputValue,code,intent,docId);
+                        warehouseModel.deleteWarehouseRecord(bulan, mapId,userInputValue,code,intent,docId);
                         warehouseView.deleteRowRecord(el.target.parentNode.parentNode.parentNode);
                     } 
                 }      
@@ -207,23 +209,25 @@ elements.coreContainer.addEventListener("click",(el)=>{
         //update the amouunt and customer from warehouse record
         let code = el.target.parentNode.parentNode.parentNode.childNodes[3].innerHTML;
         let tipe = el.target.parentNode.parentNode.parentNode.childNodes[5].innerHTML;
-        let tanggal = document.getElementById('warehouseDate').value;
+        let bulan = document.getElementById('warehouseMonth').value;
+        let tanggal = el.target.parentNode.parentNode.parentNode.childNodes[13].childNodes[4].childNodes[4].value;
         let stockOnDate = el.target.parentNode.parentNode.parentNode.childNodes[7].innerHTML;
         let intent = el.target.parentNode.parentNode.parentNode.getAttribute('class');
-        let prevUserAmount = el.target.parentNode.parentNode.parentNode.childNodes[13].childNodes[4].childNodes[1].value;
+        let prevUserAmount = el.target.parentNode.parentNode.parentNode.childNodes[13].childNodes[4].childNodes[2].value;
         let targetId = el.target.parentNode.parentNode.parentNode.childNodes[13].childNodes[1].value;
         let newEnteredAmount = el.target.parentNode.parentNode.parentNode.childNodes[9].childNodes[0].value;
         let newNamaCustomer = el.target.parentNode.parentNode.parentNode.childNodes[11].childNodes[0].value;
         let mapId = el.target.parentNode.parentNode.parentNode.childNodes[13].childNodes[8].value;
         //let rowNumber = el.target.parentNode.parentNode.parentNode.childNodes[1].innerHTML;
         console.log("edit update pressed");
-        console.log(rowNumber);
+        //console.log(rowNumber);
         //console.log(stockOnDate); --> stock per tanggal tersebut
  
         //prepare data for updateStock warehouse model
         let data = {
             code:code,
             desc:tipe,
+            bulan,
             tanggal,
             intent, 
             stock: parseInt(stockOnDate,10),
@@ -257,8 +261,8 @@ elements.coreContainer.addEventListener("click",(el)=>{
         
         
 
-    }
-    
+    } 
+   
 });
 elements.warehouseMenu.addEventListener("click",(el)=>{
         if(document.querySelector('.warehouseContainer')){
@@ -530,7 +534,7 @@ const displayUpdateContainer = (type,intent,data=``) =>{
 function eventListener(){ 
     //CODE UNTUK SET DUMMY DATA -------------------------------------------------
     //elements.addProduct.addEventListener("click",setDummyData);
-    //document.querySelector('.addCompetitorProduct').addEventListener("click", setCompetitorProductData);
+    //document.querySelector('.addCompetitorProduct').addEventListener("click", setProductData);
     
     //CODE UNTUK MANAGE PRODUK ---------------------------------------------------
     elements.manageProductMenu.addEventListener("click",() =>{

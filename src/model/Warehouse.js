@@ -54,7 +54,7 @@ export const insertWarehouseRow = (data)=>{
         return 'id-' + Math.random().toString(36).substr(2, 16);
       }();
       //console.log(uniqueId);
-    let db_warehouse_ref = db_warehouse.doc(data.tanggal);
+    let db_warehouse_ref = db_warehouse.doc(data.bulan);
     return db_warehouse_ref.set({
         [uniqueId]: {
             mapId:uniqueId,
@@ -95,7 +95,7 @@ export const updateStock = (data)=>{
     let intent = temp[0]
     let stock = parseInt(data.stock,10);
     let enteredAmount = parseInt(data.enteredAmount,10);
-    
+    console.log("databulan: "+data.bulan);
     //console.log(enteredAmount);
     if(data.prevValue || data.prevValue === 0){
         //code ketika update amount dan competitor saja,
@@ -110,7 +110,7 @@ export const updateStock = (data)=>{
         }
         //jika sudah pernah input record maka update record warehouse yang berdasarkan tanggal juga
         //update warehouse record
-        db_warehouse.doc(data.tanggal).update({
+        db_warehouse.doc(data.bulan).update({
             [`${data.mapId}.enteredAmount`]: enteredAmount,
             [`${data.mapId}.sisaStock`]: newStock,
             [`${data.mapId}.customer`]: data.customer
@@ -135,8 +135,8 @@ export const updateStock = (data)=>{
     });
 }
 
-export const getRecordOnDate=(tanggal)=>{
-    return db_warehouse.doc(tanggal).get().then((resolve)=>{
+export const getRecordOnDate=(bulan)=>{
+    return db_warehouse.doc(bulan).get().then((resolve)=>{
         if(resolve.exists){
             return resolve.data();
         }
@@ -145,7 +145,7 @@ export const getRecordOnDate=(tanggal)=>{
     });
 }
 
-export const deleteWarehouseRecord = (tanggal, mapId,inputValue,code,intent,docId)=>{
+export const deleteWarehouseRecord = (bulan, mapId,inputValue,code,intent,docId)=>{
     curQty(code).then((data)=>{
         console.log(data.stock);
         let newStock;
@@ -164,7 +164,7 @@ export const deleteWarehouseRecord = (tanggal, mapId,inputValue,code,intent,docI
             });
     }).catch();
     
-    db_warehouse.doc(tanggal).update({
+    db_warehouse.doc(bulan).update({
         [mapId]: firebase.firestore.FieldValue.delete()
     }).then(()=>{
         console.log("data berhasil di delete di warehouse Record");
