@@ -153,7 +153,7 @@ export const renderResultRow = (data,tanggal)=>{
                     <td style="text-align:left;" class= "tableSmallWidth"><label>${data.code}</label><input type="text" class="codeBarangWarehouse hidden max100width"></td>
                     <td style="text-align:left;padding-left:10px;" class= "tableMediumWidth">${newTypeProd}</td>
                     <td class= "tableSmallWidth">${data.stock}</td>
-                    <td class= "tableSmallWidth"><input type="number" class="smallInput"></td>
+                    <td class= "tableSmallWidth"><input type="number" class="smallInput" required></td>
                     <td style="text-align:left; class= "tableLongWidth"><input type="text" class="longInput"></td>
                     <input type="hidden" class="prevValue" value = "">
                     <td class= "tableSmallWidth">

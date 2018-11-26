@@ -135,21 +135,25 @@ elements.coreContainer.addEventListener("click",(el)=>{
             desc:el.target.parentNode.parentNode.childNodes[7].innerHTML
         }
         console.log(dataWarehouseRow.tanggal);
-        
-        warehouseModel.insertWarehouseRow(dataWarehouseRow).then(resolve=>{
-            //console.log(resolve);
-            warehouseView.deleteRowRecord();
-            warehouseView.renderCodeRow('none',resolve);
-            //render new result, pas pindahin tanggal jg render new   
-        }).catch(error=>{
-            console.log(`failed inserting new record to database ${error} code X129837`);
-        });
-        
-        warehouseModel.updateStock(dataWarehouseRow).then(resolve=>{
-            console.log(resolve);
-        }).catch();
-        
-        //console.log(dataWarehouseRow.desc);     
+        if(!dataWarehouseRow.enteredAmount){
+            console.log(dataWarehouseRow.enteredAmount);
+            alert("Jumlah tidak boleh kosong!");
+        }else{
+            warehouseModel.insertWarehouseRow(dataWarehouseRow).then(resolve=>{
+                //console.log(resolve);
+                warehouseView.deleteRowRecord();
+                warehouseView.renderCodeRow('none',resolve);
+                //render new result, pas pindahin tanggal jg render new   
+            }).catch(error=>{
+                console.log(`failed inserting new record to database ${error} code X129837`);
+            });
+            
+            warehouseModel.updateStock(dataWarehouseRow).then(resolve=>{
+                console.log(resolve);
+            }).catch();
+            
+            //console.log(dataWarehouseRow.desc);   
+        }  
     }   
     if(el.target.matches('.deleteWarehouseRecord')){
         console.log("delete pressed");
@@ -177,10 +181,10 @@ elements.coreContainer.addEventListener("click",(el)=>{
                     let userInputValue = el.target.parentNode.parentNode.childNodes[9].childNodes[1].value;
                     //get the map id
                     let mapId = el.target.parentNode.parentNode.childNodes[13].childNodes[9].value;
-                    if(mapId){
-                        warehouseModel.deleteWarehouseRecord(bulan, mapId,userInputValue,code,intent,docId);
-                        warehouseView.deleteRowRecord(el.target.parentNode.parentNode.parentNode);
-                    } 
+                        if(mapId){
+                            warehouseModel.deleteWarehouseRecord(bulan, mapId,userInputValue,code,intent,docId);
+                            warehouseView.deleteRowRecord(el.target.parentNode.parentNode.parentNode);                   
+                    }                
                 }      
         }else{
             console.log("no checker");
@@ -239,6 +243,7 @@ elements.coreContainer.addEventListener("click",(el)=>{
         }
         console.log(data);
         //code untuk update stock jika add,delete,update dari row yang sudah pernah di buat
+
         warehouseModel.updateStock(data).then(result=>{
             console.log(result);
             let newData = {
