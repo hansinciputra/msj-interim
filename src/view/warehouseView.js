@@ -135,13 +135,15 @@ export const prepareUpdateAmountRecordView = (el,stock) =>{
 //code for when upload pressed(green truck)
 export const renderResultRow = (data,tanggal)=>{
     let newTypeProd;
-    
+    console.log(data);
     if(data.type === "WPA"){
         newTypeProd = `${data.type} 0${data.size} ratio 1 : ${data.ratio}`;
     }else if(data.type === "NMRV"){
         newTypeProd = `${data.type} 0${data.size} ${data.flange} ratio 1 : ${data.ratio}`;
     }else if(data.type === "DINAMO"){
         newTypeProd = `${data.type} ${data.phase}Phasa / ${data.model} / ${data.hp} HP(${data.hp*0.75}KW) / ${data.rpm}rpm / ${data.material}`;
+    }else if(data.type === "OTHERS"){
+        newTypeProd = data.spec;
     }else{
         console.log("No Entry");
     }
