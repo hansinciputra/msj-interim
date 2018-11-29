@@ -85,7 +85,7 @@ const updateContainerOption = (type,intent,obj=``)=> {
                 <option value="NMRV">NMRV</option>
                 <option value="DINAMO">DINAMO</option>
                 <option value="WPAPART">WPA SPAREPART</option>
-                <option value="NMRVPART">NMRV SPAREPART</option>
+                <option value="NMRV SPAREPART">NMRV SPAREPART</option>
                 <option value="OTHERS">OTHERS</option>
             </select>`;
     let html = ``;
@@ -182,7 +182,7 @@ const updateContainerOption = (type,intent,obj=``)=> {
                     <button class = "btnNewProd"> Submit </button>
                 </form>
             </div>`;
-    }else if(type==='NMRVPART'){
+    }else if(type==='NMRV SPAREPART'){
         //console.log(data);
         console.log("producView NMRV parts ContainerOption called");
         html = `<div class= "core_product_update_product column2">
@@ -313,7 +313,7 @@ export const renderUpdateContainer = (type,intent,data=``) => {
                     <option value="NMRV">NMRV</option>
                     <option value="DINAMO">DINAMO</option>
                     <option value="WPAPART">WPA SPAREPART</option>
-                    <option value="NMRVPART">NMRV SPAREPART</option>
+                    <option value="NMRV SPAREPART">NMRV SPAREPART</option>
                     <option value="OTHERS">OTHERS</option>
                 </select>
             </form>
