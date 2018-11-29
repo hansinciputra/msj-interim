@@ -54,7 +54,8 @@ const temp = `
                          <input type="text" id="prodSearch" class="searchTerm" placeholder="Tulis code atau nama barang">
                       </div>
                    </div>
-        <div><a href="#" class ="coreProduct subMenu addProduct">Tambah Produk Baru</a></div>
+        <div><a href="#" class ="coreProduct subMenu addProduct">Tambah Produk Baru</a>
+        <a href="#" class ="coreProduct subMenu downloadCSV"> Export HTML Table To CSV File</a></div>
         <li>
             <span class = "product_code_title title">Code</span>
             <span class = "product_type_title title">Tipe</span>
