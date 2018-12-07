@@ -442,7 +442,7 @@ elements.coreContainer.addEventListener("click",(el)=>{
                         tipe: (document.querySelector('#prodType') ? document.querySelector('#prodType').value : null) ,
                         size: (document.querySelector('#prodSize') ? document.querySelector('#prodSize').value : null),
                         ratio: (document.querySelector('#prodRatio') ? document.querySelector('#prodRatio').value: null),
-                        flange: (document.querySelector('#prodFlange') ? document.querySelector('#prodFlange').value : null),
+                        flange: (document.querySelector('#prodFlange') ? document.querySelector('#prodFlange').value.toLowerCase() : null),
                         material: (document.querySelector('#prodMaterial') ? document.querySelector('#prodMaterial').value : null),
                         model:(document.querySelector('#prodModel') ? document.querySelector('#prodModel').value : null),
                         hp: (document.querySelector('#prodHp') ? document.querySelector('#prodHp').value : null),
@@ -471,7 +471,7 @@ elements.coreContainer.addEventListener("click",(el)=>{
                         sumberPrice = data[0].SUMBER;   
 
                         //2.b get sparepart data
-                        if(formLabel.tipe === 'WPA'||'NMRV'){
+                        if(formLabel.tipe === 'WPA'|| formLabel.tipe === 'NMRV'){
                             console.log("tipe adalah WPa atau NMRV untuk panggil spareparts");
                             Pricing.getSparePartData(formLabel.tipe).then(parts=>{
                                 let sparepartData = parts;
@@ -480,6 +480,9 @@ elements.coreContainer.addEventListener("click",(el)=>{
                                 //render pricingResult section
                                 pricingView.renderPricingResult(newData,bartexPrice,sumberPrice,sparepartData);
                             })
+                        }else{
+                            //only for Dinamo render pricingResult section
+                            pricingView.renderPricingResult(newData,bartexPrice,sumberPrice);
                         }
 
                     });
