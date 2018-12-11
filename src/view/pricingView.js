@@ -245,7 +245,7 @@ export const renderNewPricingProductSelection = (prod) =>{
                     <select id = "prodRpm" class= "width100 font2rem">  
                         <option value="3000">3000 Rpm (2Pole)</option>
                         <option value="1500">1500 Rpm (4Pole)</option>
-                        <option value="750">750 Rpm (6Pole)</option>
+                        <option value="1000">1000 Rpm (6Pole)</option>
                     </select>
                     <br>
                     <label>Phasa</label>

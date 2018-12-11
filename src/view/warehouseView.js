@@ -144,6 +144,8 @@ export const renderResultRow = (data,tanggal)=>{
         newTypeProd = `${data.type} ${data.phase}Phasa / ${data.model} / ${data.hp} HP(${data.hp*0.75}KW) / ${data.rpm}rpm / ${data.material}`;
     }else if(data.type === "OTHERS"){
         newTypeProd = data.spec;
+    }else if(data.type === "NMRV SPAREPART" || data.type === "WPA SPAREPART" ){
+        newTypeProd = `${data.type} 0${data.size} ${data.partType} ratio 1 : ${data.ratio}`;
     }else{
         console.log("No Entry");
     }

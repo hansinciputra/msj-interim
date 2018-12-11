@@ -27,6 +27,7 @@ export class WarehouseRow{
                     rpm: cur.data().rpm,
                     material: cur.data().material,
                     model: cur.data().model,
+                    partType: cur.data().partType,
                     spec: cur.data().spec
                 }
             });
