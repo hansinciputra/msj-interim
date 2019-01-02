@@ -42,7 +42,9 @@ export const renderWarehouseContainer = ()=>{
 export const renderCodeRow = (instruction,data)=>{
     console.log(moment().format('L'));
     let html =``;
+    
     if(data){
+        
         //code for : after user insert data into db, we redisplay the user input into the view
         html = `
         <tr class=${data.intent} id="finalInputRow">

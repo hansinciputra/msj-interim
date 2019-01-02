@@ -77,14 +77,14 @@ export const resetUpdateContainerForm = () =>{
 const updateContainerOption = (type,intent,obj=``)=> {
     var data = obj.data;
     var docId = obj.code;
-
+    console.log(data);
     const optionValue = `
             <select class = "prodSelect">
                 <option value="options">Pilih Produk</option>
                 <option value="WPA">WPA</option>
                 <option value="NMRV">NMRV</option>
                 <option value="DINAMO">DINAMO</option>
-                <option value="WPAPART">WPA SPAREPART</option>
+                <option value="WPA SPAREPART">WPA SPAREPART</option>
                 <option value="NMRV SPAREPART">NMRV SPAREPART</option>
                 <option value="OTHERS">OTHERS</option>
             </select>`;
@@ -120,7 +120,7 @@ const updateContainerOption = (type,intent,obj=``)=> {
         </form>
       </div>
         `;
-    }else if(type==='WPAPART'){
+    }else if(type==='WPA SPAREPART'){
         //console.log(data);
         console.log("producView WPA parts ContainerOption called");
         html = `
@@ -312,7 +312,7 @@ export const renderUpdateContainer = (type,intent,data=``) => {
                     <option value="WPA">WPA</option>
                     <option value="NMRV">NMRV</option>
                     <option value="DINAMO">DINAMO</option>
-                    <option value="WPAPART">WPA SPAREPART</option>
+                    <option value="WPA SPAREPART">WPA SPAREPART</option>
                     <option value="NMRV SPAREPART">NMRV SPAREPART</option>
                     <option value="OTHERS">OTHERS</option>
                 </select>
